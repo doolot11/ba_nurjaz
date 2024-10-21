@@ -15,7 +15,8 @@ app.use("/api/", AllRoute)
 app.use(express.static(__dirname))
 app.use('/upload', express.static(path.join(__dirname, '/upload')));
 
-const url = "mongodb://localhost:27017/nurjaz"
+// const url = "mongodb://localhost:27017/nurjaz"
+const url = "mongodb://nurjaz_123:nurjaz_321@38.242.158.213:27017/nurjaz";
 
 mongoose.connect(url)
 app.listen(3001, function () {
