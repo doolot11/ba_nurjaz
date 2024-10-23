@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 // app.use(cors());'https://nurjazkg.ru:3000, http://localhost:3000'
-const allowedOrigins = ['https://nurjazkg.ru', 'http://localhost:3000'];
+const allowedOrigins = ['https://nurjazkg.ru', 'http://localhost:3000/'];
 
 app.use(cors({
   origin: function (origin, callback) {
