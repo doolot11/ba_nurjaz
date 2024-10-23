@@ -7,7 +7,7 @@ const path = require('path');
 
 // app.use(cors());
 app.use(cors({
-  origin: 'http://38.242.158.213:3000', // Разрешить запросы только с этого домена
+  origin: 'http://nurjazkg.ru:3000', // Разрешить запросы только с этого домена
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешить определённые методы
   // allowedHeaders: ['Content-Type', 'Authorization'], // Указать допустимые заголовки
 }));
@@ -23,7 +23,7 @@ app.use(express.static(__dirname))
 app.use('/upload', express.static(path.join(__dirname, '/upload')));
 
 // const url = "mongodb://localhost:27017/nurjaz"
-const url = "mongodb://nurjaz_123:nurjaz_321@38.242.158.213/nurjaz";
+const url = "mongodb://nurjaz_123:nurjaz_321@nurjazkg.ru/nurjaz";
 
 mongoose.connect(url)
 app.listen(3001, function () {
