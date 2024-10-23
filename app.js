@@ -10,12 +10,13 @@ const allowedOrigins = ['https://nurjazkg.ru', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);  // Разрешить запросы, если домен присутствует в списке
+    // Разрешаем запросы с разрешённых доменов или если заголовок origin отсутствует (например, при локальном запуске)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));  // Отклонить запросы с других доменов
+      callback(new Error('Not allowed by CORS'));
     }
-  }, // Разрешить запросы только с этого домена
+  },// Разрешить запросы только с этого домена
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешить определённые методы
   // allowedHeaders: ['Content-Type', 'Authorization'], // Указать допустимые заголовки
 }));
