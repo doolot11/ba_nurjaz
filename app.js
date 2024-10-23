@@ -5,9 +5,17 @@ const AllRoute = require("./src/routes/AllRoute.js")
 const cors = require('cors');
 const path = require('path');
 
-// app.use(cors());
+// app.use(cors());'https://nurjazkg.ru:3000, http://localhost:3000'
+const allowedOrigins = ['https://nurjazkg.ru', 'http://localhost:3000'];
+
 app.use(cors({
-  origin: 'http://nurjazkg.ru:3000 ', // Разрешить запросы только с этого домена
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);  // Разрешить запросы, если домен присутствует в списке
+    } else {
+      callback(new Error('Not allowed by CORS'));  // Отклонить запросы с других доменов
+    }
+  }, // Разрешить запросы только с этого домена
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешить определённые методы
   // allowedHeaders: ['Content-Type', 'Authorization'], // Указать допустимые заголовки
 }));
