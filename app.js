@@ -34,7 +34,7 @@ app.use('/upload', express.static(path.join(__dirname, '/upload')));
 // const url = "mongodb://localhost:27017/nurjaz"
 const url = "mongodb://nurjaz_123:nurjaz_321@nurjazkg.ru/nurjaz";
 
-mongoose.connect(url)
+mongoose.connect(process.env.DB)
 app.listen(3001, function () {
   console.log('Example app listening on port 3000! on http://localhost:3001');
 });
