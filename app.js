@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const AllRoute = require("./src/routes/AllRoute.js")
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config()
 
 // app.use(cors());'https://nurjazkg.ru:3000, http://localhost:3000'
 const allowedOrigins = ['https://nurjazkg.ru', 'http://localhost:3000'];
@@ -34,7 +35,7 @@ app.use('/upload', express.static(path.join(__dirname, '/upload')));
 // const url = "mongodb://localhost:27017/nurjaz"
 const url = "mongodb://nurjaz_123:nurjaz_321@nurjazkg.ru/nurjaz";
 
-mongoose.connect(url)
-app.listen(3001, function () {
+mongoose.connect(process.env.DB)
+app.listen(3001, function () { 
   console.log('Example app listening on port 3000! on http://localhost:3001');
 });
