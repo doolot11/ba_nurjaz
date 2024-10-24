@@ -66,6 +66,19 @@ class Content {
             return res.status(400).json("error")
         }
     }
+    async deleteDetailCard(req, res) {
+        try {
+            const { _id } = req.body
+            const response = await detailCardModel.findByIdAndDelete(_id)
+            if (response) {
+                await res.json("Успешно удален!")
+            } else {
+                return res.status(400).json("delete error")
+            }
+        } catch (error) {
+            return res.status(400).json("error")
+        }
+    }
 }
 
 module.exports = new Content
