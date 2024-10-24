@@ -21,7 +21,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешить определённые методы
   // allowedHeaders: ['Content-Type', 'Authorization'], // Указать допустимые заголовки
 }));
-
+ 
 
 app.get('/', function (req, res) {
   res.send('<h1 style="color:blue;">Hello World!</h1>');
@@ -33,9 +33,9 @@ app.use(express.static(__dirname))
 app.use('/upload', express.static(path.join(__dirname, '/upload')));
 
 // const url = "mongodb://localhost:27017/nurjaz"
-const url = "mongodb://nurjaz_123:nurjaz_321@nurjazkg.ru/nurjaz";
+const url = "mongodb://nurjaz_123:nurjaz_321@nurjazkg.ru:27017/nurjaz";
 
-mongoose.connect(process.env.DB)
+mongoose.connect(process.env.DB)    
 app.listen(3001, function () { 
   console.log('Example app listening on port 3000! on http://localhost:3001');
-});
+}); 

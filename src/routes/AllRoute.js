@@ -12,6 +12,7 @@ router.post("/requests/isAnswered", request.isAnsweredRequest)
 router.post("/content/mainCard", upload.single("image"), content.CreateMainCard)
 router.get("/content/mainCard", content.getAllMainCards)
 router.post("/content/mainCard/delete", content.deleteMainCard)
+router.post("/content/detailCard/delete", content.deleteDetailCard)
 router.post("/content/detailCard", upload.single("image"), content.addDetailCard)
 
 module.exports = router

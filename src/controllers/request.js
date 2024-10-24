@@ -33,7 +33,7 @@ class Request {
 
             const requests = await userModel.findOne({ username, password })
             if (!requests) {
-                return res.status(400).json("error")
+                return res.status(400).json("not found user")
             }
             await res.json(requests)
         } catch (error) {
