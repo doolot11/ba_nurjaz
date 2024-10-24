@@ -39,4 +39,3 @@ mongoose.connect(process.env.DB)
 app.listen(3001, function () { 
   console.log('Example app listening on port 3000! on http://localhost:3001');
 });
-}); 
