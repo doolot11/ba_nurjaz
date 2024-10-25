@@ -18,6 +18,24 @@ class Content {
             return res.status(400).json("error")
         }
     }
+    // https://nurjazkg.ru/api/src/uploads/1729852982307.jpg
+    // https://nurjazkg.ru/api/src/uploads/1729712506564.jpg
+    async editMainCard(req, res) {
+        try {
+            const { title, _id } = req.body
+            console.log(title, _id, req.file);
+            if (req.file) {
+                const response = await mainCardModel.findByIdAndUpdate(_id, { image: req.file.filename, title }, { new: true })
+            } else {
+                const response = await mainCardModel.findByIdAndUpdate(_id, { title }, { new: true })
+            }
+
+            await res.json("Успешно создано!")
+
+        } catch (error) {
+            return res.status(400).json({ "error": "error", error })
+        }
+    }
     async addDetailCard(req, res) {
         try {
             const { idMainCard } = req.body
@@ -44,7 +62,7 @@ class Content {
     async getAllMainCards(req, res) {
         try {
             const response = await mainCardModel.find().populate("count")
-            
+
             // console.log(count);
             // response.countOfProd = count
 
